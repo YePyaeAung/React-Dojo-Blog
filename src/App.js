@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const title = 'Welcome to new blog';
+  const likes = 50;
+  // const person = { name:"Ye Pyae", age: 23 };
+  const link = "https://www.google.com";
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="content">
+        <h1>{ title }</h1>
+        <p>Liked  { likes } times.</p>
+        {/* <p>{ person }</p>
+        <p>{ person.name }</p> */}
+
+        <p>{ 20 }</p>
+        <p>{ "hello world" }</p>
+        <p>{ [1,2,3,4,5] }</p>
+        <p>{ Math.random()*10 }</p>
+        <a href={ link } target="_blank">Google Site</a>
+      </div>
     </div>
   );
 }
 
 export default App;
+
+// Can't Output the object
