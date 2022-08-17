@@ -3,21 +3,22 @@ import BlogList from './BlogList';
 
 const Home = () => {
     const [ blogs, setBlogs ] = useState(null);
-
-    const fetchData = async() => {
-        const res = await fetch('http://localhost:8000/blogs')
-            return res.json();
-    }
+    const [ isPending, setIsPending ] = useState(true);
 
     useEffect(() => {
-        fetchData()
-        .then(data => {
+        fetch('http://localhost:8000/blogs')
+            .then( res => {
+                return res.json();
+            })
+            .then( data => {
                 setBlogs(data);
+                setIsPending(false);
             })
     }, [  ])
 
     return (
         <div className="home">
+            { isPending && <div>Loading...</div> }
             { blogs && <BlogList blogs={ blogs } title="All Blogs!"/> } {/* Conditional Rendering Template */}
         </div>
     )
