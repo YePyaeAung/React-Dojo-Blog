@@ -4,12 +4,14 @@ import BlogList from './BlogList';
 const Home = () => {
     const [ blogs, setBlogs ] = useState(null);
 
+    const fetchData = async() => {
+        const res = await fetch('http://localhost:8000/blogs')
+            return res.json();
+    }
+
     useEffect(() => {
-        fetch('http://localhost:8000/blogs')
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
+        fetchData()
+        .then(data => {
                 setBlogs(data);
             })
     }, [  ])
